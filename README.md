@@ -11,7 +11,7 @@ Aside from facilitating your cat adoption search, this script could be used to c
 
 ## Installation
 ```sh
-pip install requirements.txt
+pip install -r requirements.txt
 ```
 
 ## Run
