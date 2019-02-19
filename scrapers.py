@@ -218,11 +218,13 @@ def scrape_petfinder(zip_code):
             cat.adoption_center["name"] = (entry["organization"].get("name")
                                            if entry.get("organization")
                                            else None)
-            contact = entry["contact"][0] if isinstance(
-                entry["contact"], list) else entry["contact"]
-            cat.adoption_center["contact_info"] = contact.get("email")
-            cats.append(cat)
 
+            contact = entry["contact"][0] if isinstance(
+                entry["contact"], list) and len(entry["contact"]) > 0\
+                else entry["contact"]
+            cat.adoption_center["contact_info"] = contact.get("email")\
+                if isinstance(contact, dict) else None
+            cats.append(cat)
     print("Found {} cats on Petfinder.".format(len(cats)))
     return cats
 
